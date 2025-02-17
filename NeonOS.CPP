@@ -8,7 +8,7 @@
 namespace fs = std::filesystem;
 using namespace std;
 
-const string SKYOS_DESKTOP = "C:\\Neon\\Desktop";
+const string SKYOS_DESKTOP = "C:\AetherionOS\\Desktop";
 
 // Функция для создания структуры папок рабочего стола SkyOS
 void setupSkyOSDesktop() {
@@ -33,7 +33,7 @@ void addToAutostart() {
     LONG result = RegOpenKeyExA(HKEY_CURRENT_USER, "Software\\Microsoft\\Windows\\CurrentVersion\\Run", 0, KEY_WRITE, &hKey);
 
     if (result == ERROR_SUCCESS) {
-        const char* programName = "SkyOS";
+        const char* programName = "AetherionOS";
         result = RegSetValueExA(hKey, programName, 0, REG_SZ,
             reinterpret_cast<const BYTE*>(programPath.c_str()),
             (DWORD)(programPath.size() + 1));
@@ -119,7 +119,7 @@ void openWebsite(string url) {
 // Функция для обработки команд
 void executeCommand(const string& command) {
     if (command == "exit") {
-        cout << "Exiting SkyOS..." << endl;
+        cout << "Exiting AetherionOS..." << endl;
         exit(0);
     }
     else if (command == "help") {
@@ -170,10 +170,10 @@ int main() {
     addToAutostart();
 
     string command;
-    cout << "Welcome to Neon CLI. Type 'help' for commands." << endl;
+    cout << "Welcome to Aetherion CLI. Type 'help' for commands." << endl;
 
     while (true) {
-        cout << "NeonOS> ";
+        cout << "Aetherion> ";
         getline(cin, command);
         executeCommand(command);
     }
